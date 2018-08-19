@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <input type="text" class="form-control " id="nameInput" placeholder="Enter macro name"/>
+                <input type="text" class="form-control " id="nameInput" placeholder="Enter macro name" />
                 <br />
             </div>
             <table class="table table-bordered table-hover" id="tab_logic">
@@ -64,15 +64,23 @@
                 <button id='delete_row' class="btn btn-danger float-right">Delete Row</button>
             </div>
         </div>
-        <br/>
+        <br />
         <div class="row">
             <div class="col-md-8"><button id="generate" class="btn btn-success">Generate</button></div>
         </div>
-        <br/>
+        <br />
         <div class="row">
             <textarea id="template" class="form-control">
-
             </textarea>
+        </div>
+        <br />
+        <div class="row">
+            <div class="container">
+                <div class="row exampleTableContainer">
+                    <div class='row'><div class='caption'>Example attack</div></div>
+                    <div class='row nameValueDiv'><div class='col col-md-4 nameDiv'>Attack</div><div class='col valueDiv col-md-8'><span class='inlinerollresult showtip tipsy - n - right fullfail' title='class=& quot; inlineqroll & quot;> Rolling(0 - 1 + 0 + -1 + 0)d6cf0cs7 + 0 + 5 + 0 + 1d6!cf1cs6 = () + 0 + 5 + 0 + (<span class=& quot; basicdiceroll critfail & quot;> 1</span >)'>6</span></div></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -98,18 +106,86 @@
                 }
             });
             $("#generate").click(function () {
+                var htmlString = "<div class='row'><div class='caption'>" + $("#nameInput").val() + "</div></div>";
                 $("#template").val("&{template:default}");
                 $("#template").val($('#template').val() + " {{name=" + $("#nameInput").val() + "}}");
                 for (var a = 0; a < i; a++) {
                     if ($("#type" + a).val() == "roll") {
                         $("#template").val($('#template').val() + " {{" + $("#name" + a).val() + "=[[" + $("#value" + a).val() + "]]}}");
+                        htmlString = htmlString + ("<div class='row nameValueDiv'><div class='col col-md-4 nameDiv'>" + $("#name" + a).val() + ": </div><div class='col valueDiv col-md-8'> <span class='inlinerollresult showtip tipsy - n - right fullfail' title='class=& quot; inlineqroll & quot;> Rolling(0 - 1 + 0 + -1 + 0)d6cf0cs7 + 0 + 5 + 0 + 1d6!cf1cs6 = () + 0 + 5 + 0 + (<span class=& quot; basicdiceroll critfail & quot;> 1</span >)'>6</span></div></div>");
                     }
                     else {
                         $("#template").val($('#template').val() + " {{" + $("#name" + a).val() + "=" + $("#value" + a).val() + "}}");
+                        htmlString = htmlString + ("<div class='row nameValueDiv'><div class='col col-md-4 nameDiv'>" + $("#name" + a).val() + ": </div><div class='col valueDiv col-md-8'> " + $("#value" + a).val() + "</div></div>");
                     }
                 }
+
+                $(".exampleTableContainer").html(htmlString);
             })
 
         });</script>
+    <style>
+        .exampleTableContainer {
+            border:solid black 1px;
+            width: 500px;
+        }
+        .caption {
+            background-color: rgba(112, 32, 130,1);
+            color: #ffffff;
+            padding: 2px;
+            border-bottom: 1px solid black;
+            line-height: 1.6em;
+            font-size: 1.2em;
+            width: 498px;
+            margin-left: 15px;
+            text-align: center
+        }
+        .nameValueDiv {
+            width: 498px;
+            margin-left: 0px
+        }
+        .nameDiv, .valueDiv {
+            color: black;
+            font-size: 1em;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            padding: 5px;
+            border: solid white 1px;
+        }
+        .nameValueDiv:nth-of-type(even) .nameDiv, .nameValueDiv:nth-of-type(even) .valueDiv {
+            background-color: rgba(217, 217, 214,1);
+        }
+        .nameValueDiv:nth-of-type(odd) .nameDiv, .nameValueDiv:nth-of-type(odd) .valueDiv {
+            background-color: rgba(233, 233, 233,1);
+        }
+
+        .tipsy-n.tipsy, .tipsy-n-right.tipsy {
+            opacity: 1 !important
+        }
+
+        .inlinerollresult.fullcrit {
+            border: 2px solid #3FB315
+        }
+
+        .inlinerollresult.fullfail {
+            border: 2px solid #B31515
+        }
+
+        .inlinerollresult.importantroll {
+            border: 2px solid #4A57ED
+        }
+
+        .inlinerollresult {
+            font-size: inherit
+        }
+
+        .inlinerollresult {
+            background-color: #FEF68E;
+            border: 2px solid #FEF68E;
+            padding: 0 3px 0 3px;
+            font-weight: bold;
+            cursor: help;
+            font-size: 1.1em;
+        }
+    </style>
 </body>
 </html>
