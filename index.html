@@ -93,7 +93,7 @@
         $(document).ready(function () {
             var i = 1;
             $("#add_row").click(function () {
-                $('#row' + i).html("<td>" + (i + 1) + "</td><td><input id='name" + i + "' placeholder='Name' class='form-control' /></td><td><select id='pass" + i + "' class='custom-select' name='type" + i + "'> <option selected value='roll'> Roll</option><option value='text'>Text</option>" +
+                $('#row' + i).html("<td>" + (i + 1) + "</td><td><input id='name" + i + "' placeholder='Name' class='form-control' /></td><td><select id='type" + i + "' class='custom-select' name='type" + i + "'> <option selected value='roll'> Roll</option><option value='text'>Text</option>" +
                     "</select></td><td><input type='text' id='value" + i + "' placeholder='Value' class='form-control' ></td>");
 
                 $('#tab_logic').append('<tr id="row' + (i + 1) + '"></tr>');
@@ -111,6 +111,7 @@
                 $("#template").val($('#template').val() + " {{name=" + $("#nameInput").val() + "}}");
                 for (var a = 0; a < i; a++) {
                     if ($("#type" + a).val() == "roll") {
+                        console.log($("#type" + a).val())
                         $("#template").val($('#template').val() + " {{" + $("#name" + a).val() + "=[[" + $("#value" + a).val() + "]]}}");
                         htmlString = htmlString + ("<div class='row nameValueDiv'><div class='col col-md-4 nameDiv'>" + $("#name" + a).val() + ": </div><div class='col valueDiv col-md-8'> <span class='inlinerollresult showtip tipsy - n - right fullfail' title='class=& quot; inlineqroll & quot;> Rolling(0 - 1 + 0 + -1 + 0)d6cf0cs7 + 0 + 5 + 0 + 1d6!cf1cs6 = () + 0 + 5 + 0 + (<span class=& quot; basicdiceroll critfail & quot;> 1</span >)'>6</span></div></div>");
                     }
