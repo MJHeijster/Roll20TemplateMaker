@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -11,7 +11,7 @@
     <title>Roll20 Macro Maker</title>
 </head>
 <body>
-    <h1>Macro maker:</h1>
+    <center><h1>Macro maker:</h1></center>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
@@ -79,6 +79,55 @@
                 <div class="row exampleTableContainer">
                     <div class='row'><div class='caption'>Example attack</div></div>
                     <div class='row nameValueDiv'><div class='col col-md-4 nameDiv'>Attack</div><div class='col valueDiv col-md-8'><span class='inlinerollresult showtip tipsy - n - right fullfail' title='class=& quot; inlineqroll & quot;> Rolling(0 - 1 + 0 + -1 + 0)d6cf0cs7 + 0 + 5 + 0 + 1d6!cf1cs6 = () + 0 + 5 + 0 + (<span class=& quot; basicdiceroll critfail & quot;> 1</span >)'>6</span></div></div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#exampleMacros" aria-expanded="false" aria-controls="exampleMacros">
+            Example macros
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#howToDiv" aria-expanded="false" aria-controls="howToDiv">
+            How to
+        </button>
+        <br />
+        <div class="collapse" id="exampleMacros">
+            <div class="card card-body">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-header">
+                            Initiative
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">/me rolls a [[1d20+2&{tracker}]] for initiative!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse" id="howToDiv">
+            <div class="card card-body">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-header">
+                            How to add in Roll20
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <img src="img\1.png" />
+                                <br />
+                                Go to your character sheet, click Attributes &Aacute; Abilities, click + Add next to Abilities and click the pencil.
+                            </li>
+                            <li class="list-group-item">
+                                <img src="img\2.png" />
+                                <br />
+                                Enter the name and macro followed by the checkmark icon.
+                            </li>
+                            <li class="list-group-item">
+                                Click the dice icon next under the macro name. 
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
